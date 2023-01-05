@@ -1,0 +1,56 @@
+# Use repo git config
+export GIT_CONFIG_GLOBAL=~/.config/git/gitconfig
+
+
+
+###
+# Git Bash Prompt
+###
+
+autoload -Uz compinit && compinit
+autoload -Uz vcs_info
+
+
+precmd() { vcs_info }
+
+setopt PROMPT_SUBST
+
+zstyle ':vcs_info:git*:*' check-for-changes true
+
+zstyle ':vcs_info:*' unstagedstr '%F{177}+%f'
+zstyle ':vcs_info:*' stagedstr '%F{87}+%f'
+
+zstyle ':vcs_info:git:*' formats '%F{blue}%b%f%u%c%m'
+zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
+
+PROMPT='%(?.%F{green}●.%F{red}●%f) %F{yellow}%1~%f ${vcs_info_msg_0_} 
+$ '
+RPROMPT='%F{245}%*%f'
+
+# Add arrows for changes to pull/push
+zstyle ':vcs_info:git+post-backend:*' hooks git-post-backend-updown
++vi-git-post-backend-updown() {
+	git rev-parse @{upstream} >/dev/null 2>&1 || return
+	local -a x; x=( $(git rev-list --left-right --count HEAD...@{upstream} ) )
+	(( x[2] )) && hook_com[branch]+="%F{214}↓$x[2]%f"
+	(( x[1] )) && hook_com[branch]+="%F{214}↑$x[1]%f"
+	return 0
+}
+
+
+# Add + for untracked changes in current branch
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-stashed
+
++vi-git-untracked(){
+	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+    	git status --porcelain | grep '??' &> /dev/null ; then
+        hook_com[staged]+='%F{red}+%f'
+    fi
+}
+
+# Adds a *n for each staged change
++vi-git-stashed(){
+	local -a x; x=( $(git stash list | wc -l) )
+	(( x)) && hook_com[misc]+="%F{green}*$x%f"
+	return 0
+}

@@ -1,0 +1,12 @@
+theme ="tokyonight"
+
+[editor]
+line-number = "relative"
+auto-save = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+
+[editor.file-picker]
+hidden = false
