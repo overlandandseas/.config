@@ -64,7 +64,7 @@ cmd + shift - 9 : yabai -m window --space 9
 #            | xargs -I{} yabai -m window --focus {}
 
 # enter fullscreen mode for the focused container
-cmd - f : yabai -m window --toggle zoom-fullscreen
+# cmd - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
-cmd + shift - f : yabai -m window --toggle native-fullscreen
+# cmd + shift - f : yabai -m window --toggle native-fullscreen

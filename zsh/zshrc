@@ -57,5 +57,5 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-stashed
 # Work Shortcuts
 ###
 
-alias mt="cd ~/workspace/engx-mt"
+alias mt="cd ~/workspace/engx-mt;source engx-mt/activate"
 alias web="cd ~/workspace/engx-web" 
