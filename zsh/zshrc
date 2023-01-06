@@ -1,8 +1,6 @@
 # Use repo git config
 export GIT_CONFIG_GLOBAL=~/.config/git/gitconfig
 
-
-
 ###
 # Git Bash Prompt
 ###
@@ -54,3 +52,10 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-stashed
 	(( x)) && hook_com[misc]+="%F{green}*$x%f"
 	return 0
 }
+
+###
+# Work Shortcuts
+###
+
+alias mt="cd ~/workspace/engx-mt"
+alias web="cd ~/workspace/engx-web" 
