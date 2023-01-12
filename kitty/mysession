@@ -1,0 +1,2 @@
+launch zsh -c "echo $KITTY_LISTEN_ON > /tmp/kitty-listen-on"
+new_os_window

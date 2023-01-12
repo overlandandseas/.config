@@ -68,3 +68,6 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
 alt + shift - f : yabai -m window --toggle native-fullscreen
+
+# open new kitty window on current workspace
+cmd - f1 : kitty @ --to $(cat /tmp/kitty-listen-on) launch --type os-window
