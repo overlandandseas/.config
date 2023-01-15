@@ -52,11 +52,3 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-stashed
 	(( x)) && hook_com[misc]+="%F{green}$x%f"
 	return 0
 }
-
-###
-# Work Shortcuts
-###
-
-alias mt="cd ~/workspace/engx-mt/engx-mt;source activate"
-alias web="cd ~/workspace/engx-web/engx-web"
-alias api="cd ~/workspace/engx-api"
