@@ -2,7 +2,7 @@ theme ="tokyonight"
 
 [editor]
 line-number = "relative"
-auto-save = true
+# auto-save = true
 
 [editor.cursor-shape]
 insert = "bar"
