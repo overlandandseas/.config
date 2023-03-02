@@ -1,6 +1,9 @@
 # Use repo git config
 export GIT_CONFIG_GLOBAL=~/.config/git/gitconfig
 
+# Use mysql@5.7
+export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+
 ###
 # Git Bash Prompt
 ###
