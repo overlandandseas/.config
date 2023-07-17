@@ -2,6 +2,8 @@ theme ="tokyonight"
 
 [editor]
 line-number = "relative"
+shell = ["zsh", "-c"]
+true-color = true
 # auto-save = true
 
 [editor.cursor-shape]
@@ -10,3 +12,10 @@ normal = "block"
 
 [editor.file-picker]
 hidden = false
+
+[editor.soft-wrap]
+enable = true
+
+[editor.statusline]
+right = ["version-control", "diagnostics", "selections", "position", "file-encoding"]
+
