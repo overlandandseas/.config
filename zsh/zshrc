@@ -88,3 +88,15 @@ alias web="cd ~/workspace/engx-web/engx-web"
 alias api="cd ~/workspace/engx-api"
 export PATH="/opt/homebrew/opt/libcouchbase@2/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
+
+
+reload_ssh_keys () {
+   ssh-add -D
+   if [ "$(uname)" = "Darwin" ]; then
+    ssh_add_arg="--apple-use-keychain"
+  else
+    ssh_add_arg=""
+  fi
+  ssh-add "$ssh_add_arg" ~/.ssh/id_ed25519
+  ssh-add "$ssh_add_arg" ~/.ssh/loverlan_at_linkedin.com_ssh_key
+}
