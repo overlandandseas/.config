@@ -1,6 +1,6 @@
 [user]
-    email = loverlan@linkedin.biz
-    name = Lucas
+	email = lucas.overland@gmail.com
+	name = Lucas Øverland
 [pull]
     rebase = true
 [push]
@@ -118,3 +118,8 @@
     interactive = auto
 [core]
     editor = hx
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
