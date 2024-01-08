@@ -2,4 +2,5 @@
 name = "python"
 scope = "source.python"
 language-server = { command = "ruff-lsp" }
+
 config = { settings = { args = [] } }

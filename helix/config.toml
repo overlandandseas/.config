@@ -19,3 +19,8 @@ enable = true
 [editor.statusline]
 right = ["version-control", "diagnostics", "selections", "position", "file-encoding"]
 
+
+[keys.normal.space]
+l = [":sh kitty @ launch --type=overlay-main --cwd=current nnn -p open_this", ":open open_this", "select_all", "goto_file" ]
+# l = [":sh kitten run-shell nnn -p open_this"]
+

@@ -1,3 +1,5 @@
+cd ~
+
 # Use repo git config
 export GIT_CONFIG_GLOBAL=~/.config/git/gitconfig
 
@@ -11,13 +13,16 @@ echo $KITTY_LISTEN_ON > /tmp/kitty-listen-on
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # ZIG
-export PATH="/Users/loverlan/zig/zig-macos-aarch64-0.11.0-dev.2964+e9cbdb2cf/:$PATH"
+export PATH="/Users/loverlan/zig/zig-macos-aarch64-0.12.0-dev.1127+32bc07767/:$PATH"
 
 # ZLS
 export PATH="/Users/loverlan/zig/zls-aarch64-macos/bin/:$PATH"
 
 # GO
 export PATH="/Users/loverlan/go/bin/:$PATH"
+
+# Ruby
+export PATH="/opt/homebrew/Cellar/ruby/3.2.2_1/bin:$PATH"
 
 #Homebrew
 export PATH=/opt/homebrew/bin:$PATH
@@ -82,3 +87,4 @@ alias mt="cd ~/workspace/engx-mt/engx-mt;source activate"
 alias web="cd ~/workspace/engx-web/engx-web"
 alias api="cd ~/workspace/engx-api"
 export PATH="/opt/homebrew/opt/libcouchbase@2/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
