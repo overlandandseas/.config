@@ -4,6 +4,7 @@ theme ="tokyonight"
 line-number = "relative"
 shell = ["zsh", "-c"]
 true-color = true
+auto-format = false
 # auto-save = true
 
 [editor.cursor-shape]

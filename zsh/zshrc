@@ -13,7 +13,7 @@ echo $KITTY_LISTEN_ON > /tmp/kitty-listen-on
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # ZIG
-export PATH="/Users/loverlan/zig/zig-macos-aarch64-0.12.0-dev.1127+32bc07767/:$PATH"
+export PATH="/Users/loverlan/zig/zig-macos-aarch64-0.12.0-dev.2139+e025ad7b4/:$PATH"
 
 # ZLS
 export PATH="/Users/loverlan/zig/zls-aarch64-macos/bin/:$PATH"
