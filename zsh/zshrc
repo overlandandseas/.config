@@ -3,29 +3,11 @@ cd ~
 # Use repo git config
 export GIT_CONFIG_GLOBAL=~/.config/git/gitconfig
 
-# Use mysql@5.7
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+# Helix Runtime
+export HELIX_RUNTIME=~/src/helix/runtime
 
 # Kitty export
 echo $KITTY_LISTEN_ON > /tmp/kitty-listen-on
-
-# CURL
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-
-# ZIG
-export PATH="/Users/loverlan/zig/zig-macos-aarch64-0.12.0-dev.2139+e025ad7b4/:$PATH"
-
-# ZLS
-export PATH="/Users/loverlan/zig/zls-aarch64-macos/bin/:$PATH"
-
-# GO
-export PATH="/Users/loverlan/go/bin/:$PATH"
-
-# Ruby
-export PATH="/opt/homebrew/Cellar/ruby/3.2.2_1/bin:$PATH"
-
-#Homebrew
-export PATH=/opt/homebrew/bin:$PATH
 
 ###
 # Git Bash Prompt
@@ -79,24 +61,3 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-stashed
 	return 0
 }
 
-###
-# Work Shortcuts
-###
-
-alias mt="cd ~/workspace/engx-mt/engx-mt;source activate"
-alias web="cd ~/workspace/engx-web/engx-web"
-alias api="cd ~/workspace/engx-api"
-export PATH="/opt/homebrew/opt/libcouchbase@2/bin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
-
-
-reload_ssh_keys () {
-   ssh-add -D
-   if [ "$(uname)" = "Darwin" ]; then
-    ssh_add_arg="--apple-use-keychain"
-  else
-    ssh_add_arg=""
-  fi
-  ssh-add "$ssh_add_arg" ~/.ssh/id_ed25519
-  ssh-add "$ssh_add_arg" ~/.ssh/loverlan_at_linkedin.com_ssh_key
-}
