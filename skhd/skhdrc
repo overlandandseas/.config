@@ -1,8 +1,8 @@
 # change focus
-cmd - h : yabai -m window --focus west
-cmd - j : yabai -m window --focus south
-cmd - k : yabai -m window --focus north
-cmd - l : yabai -m window --focus east
+# cmd - h : yabai -m window --focus west
+# cmd - j : yabai -m window --focus south
+# cmd - k : yabai -m window --focus north
+# cmd - l : yabai -m window --focus east
 # (cmd) change focus (using arrow keys)
 cmd - left  : yabai -m window --focus west
 cmd - down  : yabai -m window --focus south
@@ -10,10 +10,10 @@ cmd - up    : yabai -m window --focus north
 cmd - right : yabai -m window --focus east
 
 # shift window in current workspace
-cmd + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
-cmd + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
-cmd + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
-cmd + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+# cmd + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+# cmd + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+# cmd + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+# cmd + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
 # cmdernatively, use the arrow keys
 cmd + shift - left : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
 cmd + shift - down : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
@@ -67,7 +67,7 @@ cmd + shift - 9 : yabai -m window --space 9
 alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
-alt + shift - f : yabai -m window --toggle native-fullscreen
+# alt + shift - f : yabai -m window --toggle native-fullscreen
 
 # open new kitty window on current workspace
 cmd - f1 : kitty @ --to $(cat /tmp/kitty-listen-on) launch --type os-window

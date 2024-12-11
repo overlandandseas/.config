@@ -1,0 +1,32 @@
+# [language-server.astro-language-server]
+# command = "astro-language-server"
+# args = ["--stdio"]
+# config = { "typescript" = { "tsdk" = "/Users/lucas/node_modules/typescript/lib"}, "environment" = "node" }
+
+
+
+
+# [[language]]
+# name = "astro"
+# scope = "source.astro"
+# injection-regex = "astro"
+# file-types = ["astro"]
+# roots = ["package.json", "astro.config.mjs"]
+# language-servers = ["astro-language-server"]
+
+[language-server.mylang-lsp]
+command = "mylang-lsp"
+args = ["--stdio"]
+config = { provideFormatter = true }
+environment = { "ENV1" = "value1", "ENV2" = "value2" }
+
+[language-server.efm-lsp-prettier]
+command = "efm-langserver"
+
+[language-server.efm-lsp-prettier.config]
+documentFormatting = true
+languages = { typescript = [ { formatCommand ="prettier --stdin-filepath ${INPUT}", formatStdin = true } ] }
+
+[[language]]
+name = "typescript"
+language-servers = [ { name = "efm-lsp-prettier", only-features = [ "format" ] }, "typescript-language-server" ]

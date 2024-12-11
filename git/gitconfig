@@ -39,14 +39,14 @@
     wdiff = diff -w
 # smart diff shows the changes that matter on a very granular level
     smartdiff = diff -w -b --patience
-# list of changes since current branch diverge from master branch
-    mdiff = "!f() { git fetch; git diff origin/master...HEAD; }; f"
-# list of changes since current branch diverge from master branch - ignore whitespace
-    mwdiff = "!f() { git fetch; git diff -w origin/master...HEAD; }; f"
-# list of files that have changed (with status) since current branch diverge from master branch
-    mchanges = "!f() { git fetch; git diff --name-status origin/master...HEAD; }; f"
-# list of files that have changed since current branch diverge from master branch
-    mchanged = "!f() { git fetch; git diff --name-only origin/master...HEAD; }; f"
+# list of changes since current branch diverge from main branch
+    mdiff = "!f() { git fetch; git diff origin/main...HEAD; }; f"
+# list of changes since current branch diverge from main branch - ignore whitespace
+    mwdiff = "!f() { git fetch; git diff -w origin/main...HEAD; }; f"
+# list of files that have changed (with status) since current branch diverge from main branch
+    mchanges = "!f() { git fetch; git diff --name-status origin/main...HEAD; }; f"
+# list of files that have changed since current branch diverge from main branch
+    mchanged = "!f() { git fetch; git diff --name-only origin/main...HEAD; }; f"
 # diff between two branchs
     bdiff = "!f() { git diff $1...HEAD; }; f"
 # list of files that have changed (with status) between two branches
@@ -69,6 +69,10 @@
     reintroduce = "!f() { git log $(git merge-base --octopus $(git show $1 --format='%P'))..$(git show $1 --format='%H') --format='git cherry-pick %H' --no-merges --reverse; }; f"
 # list branchs that exist on local only
     localonly = "!f() { LOCALS=$(git branch --list --no-color | cut -c 3-);REMOTES=$(git branch --all --no-color | grep 'remotes/origin' | grep -v HEAD | awk -F'/' '{print $3}');for R in $REMOTES; do LOCALS=$(echo \"$LOCALS\" | grep -v $R); done; echo \"$LOCALS\"; }; f"
+# list previous branches
+    recentbranches = "for-each-ref --sort=-committerdate refs/heads refs/remotes --format=\"%(color:red)%(objectname:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset)) %(authorname)\""
+# list recent branches pretty
+    rb = "!git recentbranches --color=always | less -r"
 # leaderboard
     leaderboard = shortlog -s -n
 # hard reset

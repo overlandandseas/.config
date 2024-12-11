@@ -3,11 +3,33 @@ cd ~
 # Use repo git config
 export GIT_CONFIG_GLOBAL=~/.config/git/gitconfig
 
+#CLI Colors
+export CLICOLOR=1
+
 # Helix Runtime
 export HELIX_RUNTIME=~/src/helix/runtime
 
 # Kitty export
 echo $KITTY_LISTEN_ON > /tmp/kitty-listen-on
+
+# local bin
+export PATH="/Users/lucas/bin:$PATH"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+# python
+export PATH="/Users/lucas/.pyenv/versions/3.12.2/bin:$PATH"
+
+
+# postgres
+export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@14/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@14/include"
+
 
 ###
 # Git Bash Prompt
@@ -57,7 +79,47 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-stashed
 # Adds a *n for each staged change
 +vi-git-stashed(){
 	local -a x; x=( $(git stash list | wc -l) )
-	(( x)) && hook_com[misc]+="%F{green}$x%f"
+	(( x)) && hook_com[misc]+="%F{green}󰈻$x%f"
 	return 0
 }
+
+
+###
+# ssh kitty
+###
+alias ssh="kitten ssh"
+
+###
+# yabai
+###
+alias ys="yabai --restart-service"
+
+
+###
+# Obie
+##
+
+# update
+alias update="git fetch && git pull && yarn && yarn migrate:dev"
+
+# setup
+alias setup="cd ~/workspace/risk-management && update"
+
+# setup-main
+alias setup-main="setup && git ch main && update"
+
+# heroku pr console
+pr-console() {
+	heroku run yarn workspace api console --app obie-rm-review-pr-$1
+}
+
+# prod-dump
+alias obie-backup="pg_restore --data-only --no-owner -h localhost -U lucas -d obie_dev ~/Downloads/prod.dump"
+
+
+###
+# ZIG
+###
+export PATH="/Users/lucas/zig/zig-macos-aarch64-0.14.0-dev.2367+aa7d13846/:$PATH"
+
 
