@@ -1,0 +1,14 @@
+[manager]
+ratio = [ 3, 5, 0 ]
+
+[opener]
+open = [
+  # { run = 'kitten @ send-text -m neighbor:right ":o $@ \r"', desc = "Open in Helix", for = "macos" }
+  { run = "plugin smart-enter", for = "macos" }
+]
+
+
+[open]
+rules = [
+  { name = "*", use = "open" }
+]

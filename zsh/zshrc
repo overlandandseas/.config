@@ -1,5 +1,7 @@
 cd ~
 
+export EDITOR=hx
+
 # Use repo git config
 export GIT_CONFIG_GLOBAL=~/.config/git/gitconfig
 
@@ -15,6 +17,9 @@ echo $KITTY_LISTEN_ON > /tmp/kitty-listen-on
 # local bin
 export PATH="/Users/lucas/bin:$PATH"
 
+# nnn bookmarks
+export NNN_BMS="r:/Users/lucas/workspace/risk-management/"
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -26,9 +31,9 @@ export PATH="/Users/lucas/.pyenv/versions/3.12.2/bin:$PATH"
 
 
 # postgres
-export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/postgresql@14/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/postgresql@14/include"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
 
 
 ###
@@ -108,9 +113,47 @@ alias setup="cd ~/workspace/risk-management && update"
 # setup-main
 alias setup-main="setup && git ch main && update"
 
+alias db-reset="dropdb obie_dev && dropdb obie_test && createdb obie_dev && createdb obie_test"
+
 # heroku pr console
 pr-console() {
 	heroku run yarn workspace api console --app obie-rm-review-pr-$1
+}
+
+## heroku or database (table plus)
++is_number() {
+	re='^[0-9]+$'
+  if [[ $1 =~ $re ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+
+prdb() {
+	if [[ -z $1 ]]; then
+	  echo "Usage: $0 <pr-number or app name>"
+	  exit 1
+	fi
+
+	arg=$1
+	appname=$arg
+
+	if +is_number "$arg"; then
+	  appname="obie-rm-review-pr-$arg"
+	else
+	  appname=$arg
+	fi
+
+	url=$(heroku config:get DATABASE_URL --app $appname)
+
+	if [[ -z $url ]]; then
+	  echo "No app found with name $appname"
+	  exit 1
+	fi
+
+	open $url
 }
 
 # prod-dump
@@ -120,6 +163,10 @@ alias obie-backup="pg_restore --data-only --no-owner -h localhost -U lucas -d ob
 ###
 # ZIG
 ###
-export PATH="/Users/lucas/zig/zig-macos-aarch64-0.14.0-dev.2367+aa7d13846/:$PATH"
+export PATH="/Users/lucas/zig/zig-macos-aarch64-0.14.0-dev.2851+b074fb7dd/:$PATH"
+export PATH="/Users/lucas/zig/zls/zig-out/bin/:$PATH"
 
-
+###
+# Java
+###
+export PATH="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin:$PATH"

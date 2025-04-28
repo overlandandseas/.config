@@ -6,6 +6,7 @@ shell = ["zsh", "-c"]
 true-color = true
 auto-format = false
 auto-save = false
+end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape]
 insert = "bar"
@@ -19,6 +20,7 @@ enable = true
 
 [editor.statusline]
 right = ["version-control", "diagnostics", "selections", "position", "file-encoding"]
+
 
 
 [keys.normal.space]
